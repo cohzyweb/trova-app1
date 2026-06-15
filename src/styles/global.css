@@ -1,0 +1,84 @@
+/* ─── TOKENS ─────────────────────────────────────────────────────────── */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #E8C96A;
+  --gold-dark:   #A07830;
+  --gold-subtle: rgba(201,168,76,0.12);
+  --black:       #0A0A0A;
+  --dark:        #111111;
+  --card:        #181818;
+  --border:      #2A2A2A;
+  --muted:       #888888;
+  --white:       #FFFFFF;
+  --rose:        rgba(220,100,100,0.15);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  32px;
+
+  --transition: 0.22s ease;
+}
+
+/* ─── RESET ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+img { display: block; max-width: 100%; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.45); }
+  60%       { box-shadow: 0 0 0 14px rgba(201,168,76,0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.15); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.08); }
+  56%       { transform: scale(1); }
+}
+@keyframes iphone3d {
+  0%   { transform: perspective(1000px) rotateY(-25deg) rotateX(8deg)  rotateZ(-1deg); }
+  25%  { transform: perspective(1000px) rotateY(15deg)  rotateX(-5deg) rotateZ(1deg);  }
+  50%  { transform: perspective(1000px) rotateY(25deg)  rotateX(8deg)  rotateZ(-1deg); }
+  75%  { transform: perspective(1000px) rotateY(-15deg) rotateX(-5deg) rotateZ(1deg);  }
+  100% { transform: perspective(1000px) rotateY(-25deg) rotateX(8deg)  rotateZ(-1deg); }
+}
+@keyframes orbitDot {
+  from { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+}
+
+.animate-fadeUp  { animation: fadeUp 0.65s ease forwards; }
+.animate-float   { animation: floatY 4s ease-in-out infinite; }
+.animate-pulse   { animation: pulseGold 2.4s ease-in-out infinite; }
+.animate-spin-3d { animation: iphone3d 8s ease-in-out infinite !important; transform-style: preserve-3d; }
+.animate-heart   { animation: heartbeat 1.6s ease-in-out infinite; }
